@@ -24,7 +24,9 @@ GitHub に push すると → GitHub Actions がテスト → (後半) 自動デ
 
 | やりたいこと | JavaEE だと | この教材では |
 |---|---|---|
-| ソース管理 | SVN / Git | Git + GitHub |
+| ソース管理 | SVN / Git | Git + GitHub（教材では扱わない。前提知識） |
+| ビルド・テストの自動実行 (CI) | Jenkins | GitHub Actions |
+| リリース作業 (CD) | 手順書を見て手でデプロイ | GitHub Actions が自動デプロイ |
 | ビルド・依存管理 | Maven / Gradle | Python: `uv` ／ フロント: `npm` |
 | REST API | JAX-RS (`@Path`, `@GET`) | FastAPI (`@app.get`) |
 | DTO + Bean Validation | POJO + `@NotNull` | Pydantic モデル |
@@ -38,8 +40,7 @@ GitHub に push すると → GitHub Actions がテスト → (後半) 自動デ
 
 | # | 章 | 動くもの | 状態 |
 |---|---|---|---|
-| 00 | [Git と GitHub](docs/00-git.md) | このリポジトリが GitHub にある | ← いまここ |
-| 01 | Python 環境と FastAPI で Hello API | `GET /api/hello` が JSON を返す | |
+| 01 | Python 環境と FastAPI で Hello API | `GET /api/hello` が JSON を返す | ← 次ここ |
 | 02 | CRUD API と Pydantic / SQLAlchemy | Todo の登録・一覧・更新・削除 | |
 | 03 | React 入門（Vite + TypeScript） | 画面に Todo 一覧が出る | |
 | 04 | フロントとバックをつなぐ | 画面から登録できる（CORS / プロキシ） | |
@@ -62,7 +63,7 @@ py-web-app/
 
 | ツール | 用途 | 確認コマンド |
 |---|---|---|
-| Git | ソース管理 | `git --version` |
+| Git | ソース管理（使い方は前提知識として扱わない） | `git --version` |
 | Python 3.12+ | バックエンド | `python --version` |
 | Node.js 22 LTS | フロントエンド（03章〜） | `node --version` |
 | VS Code | エディタ（推奨） | |
