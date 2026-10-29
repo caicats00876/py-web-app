@@ -28,12 +28,26 @@ git config --global user.email caicats00876@gmail.com
 
 ### 2. 改行コードの扱いを決める
 
+**方針：Windows で作業するときも含めて、改行は LF で統一する。Git には変換させない。**
+
 ```bash
-git config --global core.autocrlf input
+git config --global core.autocrlf false   # WSL でも Windows の Git でも同じ設定にする
 ```
 
-- Windows は改行が `CRLF`、Linux は `LF`。混ざると diff が全行変更扱いになったり、シェルスクリプトが動かなくなる。
-- `input` = 「コミットするときは LF に揃える。取り出すときは変換しない」。Linux 側の推奨設定。
+- Windows は改行が `CRLF`、Linux は `LF`。混ざると diff が全行変更扱いになったり、シェルスクリプトが動かなくなる（`/bin/bash^M: bad interpreter`）。
+- `autocrlf` は Git が勝手に改行を変換する機能。`false` = **変換しない**。ファイルに書かれている改行がそのまま保存される。
+  - Windows 版 Git の初期値は `true`（取り出すときに CRLF に変換）。これを使うと Windows 側だけ CRLF になるので切った。
+
+`autocrlf` は **各自の PC の設定** なので、設定し忘れた人がいると崩れる。そこでリポジトリ側にも 2 つ置いた：
+
+| ファイル | 誰に効く | 何をしている |
+|---|---|---|
+| `.gitattributes` | Git | `* text=auto eol=lf` → 誰がどの OS で clone しても、テキストは LF で取り出し・LF で保存。`autocrlf` より優先される |
+| `.editorconfig` | エディタ | `end_of_line = lf` → VS Code 等で新規作成・保存したファイルを LF にする |
+
+Java で言うと、`autocrlf` は各自の IDE 設定、`.gitattributes` / `.editorconfig` はプロジェクトに入れる `pom.xml` の `<project.build.sourceEncoding>` みたいなもの。**個人設定に頼らず、リポジトリで強制する**のが今どきのやり方。
+
+> VS Code の右下ステータスバーに `LF` と出ていれば OK。`CRLF` と出ていたらクリックで切り替えられる。
 
 ### 3. Windows 側のリポジトリを WSL 側に複製
 

@@ -1,0 +1,13 @@
+# 改行コードは OS に関係なく LF に統一する（Windows で clone しても LF のまま）
+* text=auto eol=lf
+
+# Windows でしか動かないスクリプトだけは CRLF
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+*.ps1  text eol=crlf
+
+# バイナリは変換しない
+*.png  binary
+*.jpg  binary
+*.ico  binary
+*.woff2 binary
