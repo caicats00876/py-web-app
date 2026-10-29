@@ -59,11 +59,17 @@ py-web-app/
 └─ .github/workflows/  # CI/CD 定義（06章〜）
 ```
 
-## 必要なツール
+## 開発環境（WSL2 / Ubuntu 24.04）
 
-| ツール | 用途 | 確認コマンド |
+作業はすべて **WSL の中** で行う。置き場所は `~/workspace/py-web-app`。
+Windows のエクスプローラーからは `\\wsl$\Ubuntu-24.04\home\ubuntu\workspace\py-web-app` で見える。
+セットアップ手順と「各コマンドが何をしているか」は [docs/setup-wsl.md](docs/setup-wsl.md)。
+
+| ツール | 用途 | 確認コマンド（WSL 内で） |
 |---|---|---|
 | Git | ソース管理（使い方は前提知識として扱わない） | `git --version` |
-| Python 3.12+ | バックエンド | `python --version` |
+| Python 3.12+ | バックエンド | `python3 --version` |
+| uv | Python の依存管理（Maven 相当） | `uv --version` |
 | Node.js 22 LTS | フロントエンド（03章〜） | `node --version` |
-| VS Code | エディタ（推奨） | |
+| Docker | コンテナ（07章〜。それまでに導入） | `docker --version` |
+| VS Code + WSL 拡張 | エディタ。WSL 内で `code .` | |
