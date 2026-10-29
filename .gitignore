@@ -1,0 +1,33 @@
+# --- Python (backend) ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# --- Node / React (frontend) ---
+node_modules/
+dist/
+build/
+.vite/
+
+# --- 環境変数・秘密情報（絶対にコミットしない） ---
+.env
+.env.*
+!.env.example
+
+# --- DB ファイル（学習用 SQLite） ---
+*.sqlite3
+*.db
+
+# --- IDE / OS ---
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
